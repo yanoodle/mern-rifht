@@ -1,6 +1,8 @@
 seed user n product : http://localhost:5000/api/seed
 then : http://localhost:3000
 
+cd and npm start both back and front end
+
 5. List Products
    1. create products array
    2. add product images
