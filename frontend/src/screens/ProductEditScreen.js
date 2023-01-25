@@ -71,7 +71,7 @@ export default function ProductEditScreen() {
         const { data } = await axios.get(`/api/products/${productId}`);
         setName(data.name);
         setSlug(data.slug);
-        setPrice(data.price);
+        setPrice(data.price.toFixed(3));
         setImage(data.image);
         setImages(data.images);
         setCategory(data.category);
