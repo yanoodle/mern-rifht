@@ -14,7 +14,7 @@ export default function PaymentMethodScreen() {
   } = state;
 
   const [paymentMethodName, setPaymentMethod] = useState(
-    paymentMethod || 'PayPal'
+    paymentMethod || 'QRIS'
   );
 
   useEffect(() => {
@@ -37,6 +37,16 @@ export default function PaymentMethodScreen() {
         </Helmet>
         <h1 className="my-3">Payment Method</h1>
         <Form onSubmit={submitHandler}>
+          <div className="mb-3">
+            <Form.Check
+              type="radio"
+              id="QRIS"
+              label="QRIS (RECOMMENDED)"
+              value="QRIS"
+              checked={paymentMethodName === 'QRIS'}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            />
+          </div>
           <div className="mb-3">
             <Form.Check
               type="radio"

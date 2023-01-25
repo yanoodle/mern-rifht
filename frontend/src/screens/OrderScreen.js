@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
-import { getError } from '../utils';
 import { toast } from 'react-toastify';
 
 function reducer(state, action) {
@@ -105,13 +104,9 @@ export default function OrderScreen() {
         dispatch({ type: 'PAY_SUCCESS', payload: data });
         toast.success('Order is paid');
       } catch (err) {
-        dispatch({ type: 'PAY_FAIL', payload: getError(err) });
-        toast.error(getError(err));
+        dispatch({ type: 'PAY_FAIL' });
       }
     });
-  }
-  function onError(err) {
-    toast.error(getError(err));
   }
 
   useEffect(() => {
@@ -123,7 +118,7 @@ export default function OrderScreen() {
         });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+        dispatch({ type: 'FETCH_FAIL' });
       }
     };
 
@@ -182,8 +177,24 @@ export default function OrderScreen() {
       dispatch({ type: 'DELIVER_SUCCESS', payload: data });
       toast.success('Order is delivered');
     } catch (err) {
-      toast.error(getError(err));
       dispatch({ type: 'DELIVER_FAIL' });
+    }
+  }
+
+  async function approveHandler() {
+    try {
+      dispatch({ type: 'PAY_REQUEST' });
+      const { data } = await axios.put(
+        `/api/orders/${order._id}/pay`,
+        {},
+        {
+          headers: { authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({ type: 'PAY_SUCCESS', payload: data });
+      toast.success('Order is paid');
+    } catch (err) {
+      dispatch({ type: 'PAY_FAIL' });
     }
   }
 
@@ -299,11 +310,21 @@ export default function OrderScreen() {
                         <PayPalButtons
                           createOrder={createOrder}
                           onApprove={onApprove}
-                          onError={onError}
                         ></PayPalButtons>
+                        <img src="https://api.clytage.org/assets/images/qris.png" width="311.5" height="435"></img>
                       </div>
                     )}
                     {loadingPay && <LoadingBox></LoadingBox>}
+                  </ListGroup.Item>
+                )}
+                {userInfo.isAdmin && !order.isPaid && !order.isDelivered && (
+                  <ListGroup.Item>
+                    {loadingDeliver && <LoadingBox></LoadingBox>}
+                    <div className="d-grid">
+                      <Button type="button" onClick={approveHandler}>
+                        Approve Payment
+                      </Button>
+                    </div>
                   </ListGroup.Item>
                 )}
                 {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
