@@ -14,7 +14,7 @@ export default function PaymentMethodScreen() {
   } = state;
 
   const [paymentMethodName, setPaymentMethod] = useState(
-    paymentMethod || 'QRIS'
+    paymentMethod || 'QRIS, BANK BCA'
   );
 
   useEffect(() => {
@@ -40,20 +40,10 @@ export default function PaymentMethodScreen() {
           <div className="mb-3">
             <Form.Check
               type="radio"
-              id="QRIS"
-              label="QRIS (RECOMMENDED)"
-              value="QRIS"
-              checked={paymentMethodName === 'QRIS'}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            />
-          </div>
-          <div className="mb-3">
-            <Form.Check
-              type="radio"
-              id="BANK BCA"
-              label="BANK BCA"
-              value="BANK BCA"
-              checked={paymentMethodName === 'BANK BCA'}
+              id="QRIS, BANK BCA"
+              label="QRIS, BANK BCA"
+              value="QRIS, BANK BCA"
+              checked={paymentMethodName === 'QRIS, BANK BCA'}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </div>

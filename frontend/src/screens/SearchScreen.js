@@ -34,21 +34,6 @@ const reducer = (state, action) => {
   }
 };
 
-const prices = [
-  {
-    name: 'Rp 10.000 to Rp 50.000',
-    value: '10000-50000',
-  },
-  {
-    name: 'Rp 50.000 to Rp 100.000',
-    value: '50000-100000',
-  },
-  {
-    name: 'Rp 100.000 to Rp 300.000',
-    value: '100000-300000',
-  },
-];
-
 export const ratings = [
   {
     name: '4stars & up',
@@ -159,29 +144,7 @@ export default function SearchScreen() {
               ))}
             </ul>
           </div>
-          <div>
-            <h3>Price</h3>
-            <ul>
-              <li>
-                <Link
-                  className={'all' === price ? 'text-bold' : ''}
-                  to={getFilterUrl({ price: 'all' })}
-                >
-                  Any
-                </Link>
-              </li>
-              {prices.map((p) => (
-                <li key={p.value}>
-                  <Link
-                    to={getFilterUrl({ price: p.value })}
-                    className={p.value === price ? 'text-bold' : ''}
-                  >
-                    {p.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          
           <div>
             <h3>Avg. Customer Review</h3>
             <ul>
