@@ -117,11 +117,11 @@ export default function SearchScreen() {
   return (
     <div>
       <Helmet>
-        <title>Search Products</title>
+        <title>Cari Produk</title>
       </Helmet>
       <Row>
         <Col md={3}>
-          <h3>Department</h3>
+          <h3>Kategori</h3>
           <div>
             <ul>
               <li>
@@ -205,15 +205,15 @@ export default function SearchScreen() {
                       navigate(getFilterUrl({ order: e.target.value }));
                     }}
                   >
-                    <option value="newest">Newest Arrivals</option>
-                    <option value="lowest">Price: Low to High</option>
-                    <option value="highest">Price: High to Low</option>
+                    <option value="newest">Produk Terbaru</option>
+                    <option value="lowest">Harga: Terendah - Tertinggi</option>
+                    <option value="highest">Harga: Tertinggi - Terendah</option>
                     <option value="toprated">Avg. Customer Reviews</option>
                   </select>
                 </Col>
               </Row>
               {products.length === 0 && (
-                <MessageBox>No Product Found</MessageBox>
+                <MessageBox>Produk Tidak Ditemukan</MessageBox>
               )}
 
               <Row>

@@ -116,9 +116,9 @@ export default function DashboardScreen() {
             )}
           </div>
           <div className="my-3">
-            <h2>Categories</h2>
+            <h2>Kategori</h2>
             {summary.productCategories.length === 0 ? (
-              <MessageBox>No Category</MessageBox>
+              <MessageBox>Kategori Kosong</MessageBox>
             ) : (
               <Chart
                 width="100%"

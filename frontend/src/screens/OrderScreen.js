@@ -295,7 +295,8 @@ export default function OrderScreen() {
 
               <Form>
                 <Form.Group className="mb-3" controlId="additionalImage">
-                  <Form.Label>Payment Proof</Form.Label>
+                  <Form.Label>NOTE: Pembayaran akan diproses secara manual setelah bukti pembayaran terkirim</Form.Label>
+                  <Form.Label></Form.Label>
                   {images.length === 0 && <MessageBox>No image</MessageBox>}
                   <ListGroup variant="flush">
                     {images.map((x) => (
@@ -309,7 +310,7 @@ export default function OrderScreen() {
                   </ListGroup>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="additionalImageFile">
-                  <Form.Label>Upload Payment Proof</Form.Label>
+                  <Form.Label>Kirim Bukti Pembayaran</Form.Label>
                   <Form.Control
                     type="file"
                     onChange={(e) => uploadFileHandler(e, true)}

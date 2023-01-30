@@ -176,7 +176,7 @@ function ProductScreen() {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <Row>
-                    <Col>Price:</Col>
+                    <Col>Harga:</Col>
                     <Col>Rp {product.price.toFixed(3)}</Col>
                   </Row>
                 </ListGroup.Item>
@@ -197,7 +197,7 @@ function ProductScreen() {
                   <ListGroup.Item>
                     <div className="d-grid">
                       <Button onClick={addToCartHandler} variant="primary">
-                        Add to Cart
+                        Tambahkan ke Keranjang
                       </Button>
                     </div>
                   </ListGroup.Item>
